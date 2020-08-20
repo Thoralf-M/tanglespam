@@ -11,3 +11,23 @@ Set your node in config.json
 console.logs are commented out for better performance, so don't expect an output for every script
 
 Small changes can have a big impact on the result, so edit the scripts and try different values
+
+goodspam:
+
+![](images/goodspam.jpg)
+
+blowball:
+
+![](images/blowball.jpg)
+
+parasitechain:
+
+![](images/parasitechain.jpg)
+
+stitchspam:
+
+![](images/stitchspam.jpg)
+
+zmqspam:
+
+![](images/zmqspam.jpg)

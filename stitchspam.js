@@ -17,12 +17,11 @@ async function spam(length, time) {
     try {
         for (let j = 0; j < length; j++) {
             try {
-
                 let trytes = await iota.prepareTransfers(config.seed, transfers)
-                let tips = await iota.getTransactionsToApprove(1)
+                let tips = await iota.getTransactionsToApprove(2)
                 let attachedTrytes = await powBundleFunc(trytes, tips.trunkTransaction, tips.branchTransaction, config.mwm)
                 timeout(attachedTrytes, j)
-
+                await new Promise(resolve => setTimeout(resolve, 20));
             } catch (err) { console.log(err) }
         }
     } catch (e) {
@@ -32,18 +31,18 @@ async function spam(length, time) {
 
 async function timeout(attachedTrytes, j) {
     try {
-        await new Promise(resolve => setTimeout(resolve, 140000));
+        await new Promise(resolve => setTimeout(resolve, 50000));
         iota.storeAndBroadcast(attachedTrytes)
         let txHash = asTransactionObject(attachedTrytes[0]).hash
         // console.log(`Stitchspam tx ${j}/1 sent ${config.explorer + txHash}`)
-        tips = await iota.getTransactionsToApprove(1)
+        tips = await iota.getTransactionsToApprove(2)
         let trytes = await iota.prepareTransfers(config.seed, transfers)
-        attachedTrytes = await powBundleFunc(trytes, txHash, tips.branchTransaction, config.mwm)
+        if (j % 2 == 0) {
+            attachedTrytes = await powBundleFunc(trytes, txHash, tips.trunkTransaction, config.mwm)
+        } else {
+            attachedTrytes = await powBundleFunc(trytes, txHash, tips.branchTransaction, config.mwm)
+        }
         iota.storeAndBroadcast(attachedTrytes)
         // console.log(`Stitchspam tx ${j}/2 sent ${config.explorer + asTransactionObject(attachedTrytes[0]).hash}`)
-        tips = await iota.getTransactionsToApprove(1)
-        attachedTrytes = await powBundleFunc(trytes, txHash, tips.branchTransaction, config.mwm)
-        iota.storeAndBroadcast(attachedTrytes)
-        // console.log(`Stitchspam tx ${j}/3 sent ${config.explorer + asTransactionObject(attachedTrytes[0]).hash}`)
     } catch (er) { console.log(er) }
 }
