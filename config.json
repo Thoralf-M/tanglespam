@@ -1,0 +1,9 @@
+{
+    "node": "http://localhost:14265",
+    "mwm": 10,
+    "tag": "TRYTETAG",
+    "address": "999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+    "seed": "BMIULIIJLBPNMNFSPKBHJEEQWDPIYQCZVOIUP9WQLHLLBIBFXDRMSDTJTVVESRSLKJSJPCOD9JXZKWCYD",
+    "explorer": "https://comnet.thetangle.org/transaction/",
+    "zmqnode": "tcp://localhost:5556"
+}

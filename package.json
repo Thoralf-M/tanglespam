@@ -1,0 +1,18 @@
+{
+  "name": "tanglespam",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Thoralf",
+  "license": "MIT",
+  "dependencies": {
+    "@iota/core": "^1.0.0-beta.30",
+    "@iota/transaction-converter": "^1.0.0-beta.30",
+    "axios": "^0.19.2",
+    "entangled-node": "github:iotaledger/entangled-node",
+    "zeromq": "^6.0.0-beta.6"
+  }
+}
